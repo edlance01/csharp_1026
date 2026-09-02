@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Aviation/Aviation.csproj" />
+  <Project Path="AviationTest/AviationTest.csproj" Id="8ea5542a-35bc-43f9-9e9b-bca62f247541" />
+</Solution>

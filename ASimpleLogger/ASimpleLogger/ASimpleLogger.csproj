@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  
+	<!-- NuGet Metadata  -->
+	  <PackageId>NTier.ASimpleLogger</PackageId>
+	  <Version>1.0.0</Version>
+	  <Authors>Ed Lance</Authors>
+	  <Company>nTier Training</Company>
+	  <Description>A very simple console logger for .NET applications</Description>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>	
+
+</Project>

@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Aviation/Aviation.csproj" />
+  <Project Path="EventDemo/EventDemo.csproj" Id="c90002d0-2b30-48a6-a47a-d016f6b4c351" />
+  <Project Path="Examples/DelegateExamples.csproj" Id="7ede7033-f163-4342-b672-80fc9287a4b4" />
+  <Project Path="StrategyDelegate/StrategyDelegate.csproj" Id="b0cdbd03-9b7c-4e29-b6c8-29eb14aa2b4a" />
+</Solution>

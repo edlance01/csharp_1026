@@ -1,0 +1,14 @@
+<Solution>
+  <Project Path="AttributeExampleOne/AttributeExampleOne.csproj" Id="13036672-ae66-4cdf-b7b9-bda4149218eb" />
+  <Project Path="AttributeExampleTwo/AttributeExampleTwo.csproj" Id="486b2915-bba6-49e6-922c-07fd146822c5" />
+  <Project Path="Aviation/Aviation.csproj" />
+  <Project Path="EventDemo/EventDemo.csproj" Id="c90002d0-2b30-48a6-a47a-d016f6b4c351" />
+  <Project Path="Examples/DelegateExamples.csproj" Id="7ede7033-f163-4342-b672-80fc9287a4b4" />
+  <Project Path="LinqExampleOne/LinqExampleOne.csproj" Id="37e23442-3360-4c26-8a3b-1fb27cc6fcc0" />
+  <Project Path="LinqExampleTwo/LinqExampleTwo.csproj" Id="76dbc042-8618-4f46-bf72-574c62bf39dc" />
+  <Project Path="LinqGrouping/LinqGrouping.csproj" Id="0db8132b-e21d-4236-a261-0eab838fe7c4" />
+  <Project Path="Linq_SlideCode/Linq_SlideCode.csproj" Id="01fe387b-a8c2-492e-a82b-c374ecbe484f" />
+  <Project Path="NullableExample/NullableExample.csproj" Id="1943d6d8-dca7-4d11-8877-10593c657d6f" />
+  <Project Path="ReflectionExampleOne/ReflectionExampleOne.csproj" Id="a2233052-0e48-4f8a-9dd5-b946aafb947c" />
+  <Project Path="StrategyDelegate/StrategyDelegate.csproj" Id="b0cdbd03-9b7c-4e29-b6c8-29eb14aa2b4a" />
+</Solution>
