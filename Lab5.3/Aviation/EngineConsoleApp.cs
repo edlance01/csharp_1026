@@ -70,7 +70,7 @@ public class EngineConsoleApp
         }
         else 
         { 
-          Console.WriteLine("Error: Invalid command. Valid: exit, list, get [part number], listbypriceascending, listbypricedescending.");     
+          Console.WriteLine("Error: Invalid command. Valid: exit, list, get [part number], listbypriceascending, listbypricedescending, release [part number].");     
         }
     }
 

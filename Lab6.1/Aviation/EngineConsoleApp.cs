@@ -39,7 +39,9 @@ public class EngineConsoleApp
             {"get", GetCommand  },
             {"listbypriceascending", ListByPriceAscendingCommand },
             {"listbypricedescending", ListByPriceDescendingCommand  },
-            {"release", ReleaseCommand }
+            {"release", ReleaseCommand },
+            {"listbyenginetype", ListByEngineTypeCommand },
+            {"listbypricebetween", ListByPriceBetweenCommand }
          
         };
 
@@ -51,7 +53,7 @@ public class EngineConsoleApp
 
         while (_isRunning)
         {
-            Console.Write("\nEnter a command (list, get [part number], listbypriceascending, listbypricedescending, release [part number], exit): ");
+            Console.Write("\nEnter a command (list, get [part number], listbypriceascending, listbypricedescending, release [part number], listbyenginetype, listbypricebetween [min] [max], exit): ");
             string? input = Console.ReadLine()?.Trim();
             if (string.IsNullOrWhiteSpace(input)) continue;
 
@@ -70,7 +72,7 @@ public class EngineConsoleApp
         }
         else 
         { 
-          Console.WriteLine("Error: Invalid command. Valid: exit, list, get [part number], listbypriceascending, listbypricedescending.");     
+          Console.WriteLine("Error: Invalid command. Valid: exit, list, get [part number], listbypriceascending, listbypricedescending, release [part number], listbyenginetype, listbypricebetween.");     
         }
     }
 
@@ -84,6 +86,23 @@ public class EngineConsoleApp
     private bool ListCommand(string[] args, EngineFactory factory)
     {
         DisplayAllParts();
+        return true;
+    }
+
+    private bool ListByEngineTypeCommand(string[] args, EngineFactory factory)
+    {
+        if (_factory?.EngineDictionary == null)
+        {
+            Console.WriteLine("Error: Engine dictionary is not initialized.");
+            return false;
+        }
+
+        //Note: _factory.EngineDictionary.Values.OrderBy(...) creates a sorted enumerable stream without
+        // altering _factory.EngineDictionary.
+        foreach (EnginePart enginePart in _factory.EngineDictionary.Values.OrderBy(part => part.EngineType)) 
+        {
+            Console.WriteLine(_formatter.GetPartInfo(enginePart));
+        }
         return true;
     }
 
@@ -120,13 +139,42 @@ public class EngineConsoleApp
         return true;
     }
 
+    private bool ListByPriceBetweenCommand(string[] args, EngineFactory factory)
+    {
+        // in production we'd likely use TryParse
+        double minPrice = Math.Min(double.Parse(args[1]), double.Parse(args[2]));
+        double maxPrice = Math.Max(double.Parse(args[1]), double.Parse(args[2]));
+
+        Console.WriteLine($"minPrice: {minPrice}");
+        Console.WriteLine($"maxPrice: {maxPrice}");
+
+        if (_factory?.EngineDictionary == null)
+        {
+            Console.WriteLine("Error: Engine dictionary is not initialized.");
+            return false;
+        }
+
+
+        var filteredPriceParts = _factory.EngineDictionary.Values
+                                .Where(part => part.Price >= minPrice && part.Price <= maxPrice);
+        //.OrderBy(part => part.Price);  //if you want them sorted by price ascending, uncomment this line
+
+        foreach (var part in filteredPriceParts)
+        {
+            Console.WriteLine(_formatter.GetPartInfo(part));
+        }
+        return true;
+
+    }
+
+
     private bool ReleaseCommand(string[] args, EngineFactory factory)
     {
         if (args.Length == 2)
         {
             string partNumber = args[1];
             try
-            {
+            {   
                 var releasedPart = factory.engineInventoryManager.Release(partNumber);
 
                 if (releasedPart == null)
